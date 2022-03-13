@@ -79,7 +79,7 @@ function renderPlaces(places) {
        model.setAttribute('gltf-model', './assets/chevrons/scene.gltf');
        //model.setAttribute('rotation', '0 180 0');
        //model.setAttribute('animation-mixer', '');
-       model.setAttribute('scale', '0.5 0.5 0.5');
+       model.setAttribute('scale', '1.0 1.0 1.0');
        model.setAttribute('position', '-3 0.59 -3');
        //model.setAttribute('position', 'absolute');
 
