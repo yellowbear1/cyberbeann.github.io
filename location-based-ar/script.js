@@ -6,7 +6,7 @@ window.onload = () => {
 function staticLoadPlaces() {
    return [
        {
-           name: 'Magnemite',
+           name: 'chevrons',
            location: {
                lat: 1.3367423,
                lng: 103.7022156,
@@ -14,7 +14,7 @@ function staticLoadPlaces() {
        },
 
        {
-        name: 'Magnemite',
+        name: 'chevrons',
         location: {
             lat: 1.3366947,
             lng: 103.70221743,
@@ -22,7 +22,7 @@ function staticLoadPlaces() {
     } ,
 
     {
-        name: 'Magnemite',
+        name: 'chevrons',
         location: {
             lat: 1.3367225,
             lng: 103.7023373,
@@ -30,7 +30,7 @@ function staticLoadPlaces() {
     },
 
     {
-        name: 'Magnemite',
+        name: 'chevrons',
         location: {
             lat: 1.3367880,
             lng: 103.7031400,
