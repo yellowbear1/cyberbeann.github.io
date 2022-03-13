@@ -8,16 +8,16 @@ function staticLoadPlaces() {
        {
            name: 'chevrons',
            location: {
-               lat: 1.3367423,
-               lng: 103.7022156,
+               lat: 1.336685, 
+               lng: 103.702723,
            }
        },
 
        {
         name: 'chevrons',
         location: {
-            lat: 1.3366947,
-            lng: 103.70221743,
+            lat: 1.336747, 
+            lng: 103.703091,
         }
     } ,
 
@@ -32,11 +32,29 @@ function staticLoadPlaces() {
     {
         name: 'chevrons',
         location: {
-            lat: 1.3367880,
-            lng: 103.7031400,
+            lat: 1.336854, 
+            lng: 103.703408,
+        }
+    },
+      
+
+  {
+        name: 'chevrons',
+        location: {
+            lat: 1.336905, 
+            lng: 103.703711,
+        }
+    },
+       
+        {
+        name: 'chevrons',
+        location: {
+            lat: 1.336255,
+            lng: 103.702904,
         }
     }
-
+       
+       
 
 
    ];
