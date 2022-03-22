@@ -58,7 +58,15 @@ function staticLoadPlaces() {
         location: {
             lat: 1.3398810,
             lng: 103.7211118,
+        },
+{
+        name: 'chevrons',
+        location: {
+            lat: 1.341220,
+            lng: 103.722782,
         }
+
+
     }
        
        
@@ -79,7 +87,7 @@ function renderPlaces(places) {
        model.setAttribute('gltf-model', './assets/chevrons/scene.gltf');
        //model.setAttribute('rotation', '0 180 0');
        //model.setAttribute('animation-mixer', '');
-       model.setAttribute('scale', '1.0 1.0 1.0');
+       model.setAttribute('scale', '0.5 0.5 0.5');
        //model.setAttribute('position', '1 2 3');
        //model.setAttribute('position', 'absolute');
 
