@@ -58,7 +58,8 @@ function staticLoadPlaces() {
         location: {
             lat: 1.3398810,
             lng: 103.7211118,
-        },
+        }
+},
 {
         name: 'chevrons',
         location: {
@@ -67,8 +68,15 @@ function staticLoadPlaces() {
         }
 
 
-    }
-       
+    },
+
+{
+        name: 'chevrons',
+        location: {
+            lat: 1.341203,
+            lng: 103.722738,
+        }
+       }
        
 
 
@@ -88,8 +96,8 @@ function renderPlaces(places) {
        //model.setAttribute('rotation', '0 180 0');
        //model.setAttribute('animation-mixer', '');
        model.setAttribute('scale', '0.5 0.5 0.5');
-       //model.setAttribute('position', '1 2 3');
-       //model.setAttribute('position', 'absolute');
+       model.setAttribute('position', '1 2 3');
+       model.setAttribute('position', 'absolute');
 
        model.addEventListener('loaded', () => {
            window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
