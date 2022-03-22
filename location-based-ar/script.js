@@ -56,8 +56,8 @@ function staticLoadPlaces() {
         {
         name: 'chevrons',
         location: {
-            lat: 1.3397985,
-            lng: 103.7210384,
+            lat: 1.3398810,
+            lng: 103.7211118,
         }
     }
        
