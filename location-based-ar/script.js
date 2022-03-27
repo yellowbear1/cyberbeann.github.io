@@ -4,81 +4,52 @@ window.onload = () => {
 };
 
 function staticLoadPlaces() {
-   return [
-       {
-           name: 'chevrons',
-           location: {
-               lat: 1.3413229, 
-               lng: 103.7224207,
-           }
-       },
-       {
-           name: 'chevrons',
-           location: {
-               lat: 1.3413018, 
-               lng: 103.7225642,
-           }
-       },
+    const arr1 =   [103.70246,1.33637,
+    103.7026,1.33637,
+    103.70275,1.33637,
+    103.70282,1.33633,
+    103.70331,1.33633,
+    103.70338,1.33633,
+    103.70343,1.33634,
+    103.70347,1.33635,
+    103.70357,1.33639,
+    103.70359,1.33641,
+    103.70363,1.33647,
+    103.70366,1.33651,
+    103.70369,1.33653,
+    103.70371,1.33654,
+    103.70375,1.33654,
+    103.70382,1.33654
+    ];
 
-       {
-        name: 'chevrons',
-        location: {
-            lat: 1.3411785, 
-            lng: 103.7227473,
-        }
-    } ,
+    const arr2 = [];
 
-    {
-        name: 'chevrons',
-        location: {
-            lat: 1.3410330,
-            lng: 103.7230118,
-        }
-    },
+    let count = 0;
 
-    {
-        name: 'chevrons',
-        location: {
-            lat: 1.3410049, 
-            lng: 103.7231848,
+    for (let i = 0; i < arr1.length;i++) {
+        var temp = [];
+        if (count == 0) {
+            temp.push(arr1[i]);
+            count += 1;
+        } else {
+            temp.push(arr1[i]);
+            count += 1;
         }
-    },
-      
+        if (count == 2) {
+            arr2.push(temp);
+            count = 0;
+            temp = [];
+        }
+    }
 
-  {
-        name: 'chevrons',
-        location: {
-            lat: 1.3408497, 
-            lng: 103.7233920,
-        }
-    },
-       
-        {
-        name: 'chevrons',
-        location: {
-            lat: 1.3398810,
-            lng: 103.7211118,
-        }
-},
-{
-        name: 'chevrons',
-        location: {
-            lat: 1.341220,
-            lng: 103.722782,
-        }
+    const places = [];
 
+    for (const i in arr2) {
+        places.push({name: 'Chevron', location: {lat: i[0], lng: i[1],}});
+    }
 
-    },
-
-{
-        name: 'chevrons',
-        location: {
-            lat: 1.341203,
-            lng: 103.722738,
-        }
-       },
-       
-   ];
+    
+   return places;
 }
 
 function renderPlaces(places) {
@@ -91,11 +62,7 @@ function renderPlaces(places) {
        let model = document.createElement('a-entity');
        model.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
        model.setAttribute('gltf-model', './assets/chevrons/scene.gltf');
-       //model.setAttribute('rotation', '0 180 0');
-       //model.setAttribute('animation-mixer', '');
-       model.setAttribute('scale', '0.5 0.5 0.5');
-       model.setAttribute('position', '1 2 3');
-       model.setAttribute('position', 'absolute');
+       model.setAttribute('scale', '5 5 5');
 
        model.addEventListener('loaded', () => {
            window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
