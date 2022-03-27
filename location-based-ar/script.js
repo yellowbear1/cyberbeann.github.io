@@ -3,7 +3,7 @@ window.onload = () => {
     renderPlaces(places);
 };
 
-function staticLoadPlaces() {
+    function staticLoadPlaces() {
     const arr1 =   [103.70246,1.33637,
     103.7026,1.33637,
     103.70275,1.33637,
@@ -26,12 +26,13 @@ function staticLoadPlaces() {
 
     let count = 0;
 
+    var temp = new Array();
     for (let i = 0; i < arr1.length;i++) {
-        var temp = [];
+    
         if (count == 0) {
             temp.push(arr1[i]);
             count += 1;
-        } else {
+        } else if (count == 1) {
             temp.push(arr1[i]);
             count += 1;
         }
@@ -42,10 +43,11 @@ function staticLoadPlaces() {
         }
     }
 
+
     const places = [];
 
-    for (const i in arr2) {
-        places.push({name: 'Chevron', location: {lat: i[0], lng: i[1],}});
+    for (let i = 0; i < arr2.length; i++) {
+        places.push({name: 'Chevron', location: {lat: arr2[i][0], lng: arr2[i][1],}});
     }
 
     
