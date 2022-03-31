@@ -118,6 +118,7 @@ window.onload = () => {
         places.push({name: i, location: {lat: arr2[i][1], lng: arr2[i][0],}});
     }
 
+   places.reverse();
     
    return places;
 }
