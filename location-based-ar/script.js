@@ -4,7 +4,8 @@ window.onload = () => {
 };
 
     function staticLoadPlaces() {
-    const arr1 =   [    103.70143,1.3367,
+    const arr1 =   [
+           103.70143,1.3367
           103.70143,1.33686,
           103.70143,1.33694,
           103.70143,1.33703,
@@ -114,7 +115,7 @@ window.onload = () => {
     const places = [];
 
     for (let i = 0; i < arr2.length; i++) {
-        places.push({name: 'chevrons', location: {lat: arr2[i][1], lng: arr2[i][0],}});
+        places.push({name: i, location: {lat: arr2[i][1], lng: arr2[i][0],}});
     }
 
     
@@ -123,12 +124,16 @@ window.onload = () => {
 
 function renderPlaces(places) {
    let scene = document.querySelector('a-scene');
-
+   
    places.forEach((place) => {
        let latitude = place.location.lat;
        let longitude = place.location.lng;
+       let id = place.name;
 
        let model = document.createElement('a-entity');
+       
+       model.setAttribute('id', id.toString());
+       model.setAttribute('look-at', (id+1).toString());
        model.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
        model.setAttribute('gltf-model', './assets/chevrons/scene.gltf');
        model.setAttribute('scale', '0.5 0.5 0.5');
