@@ -136,7 +136,7 @@ function renderPlaces(places) {
        model.setAttribute('look-at', '#' + (id+1).toString());
        model.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
        model.setAttribute('gltf-model', './assets/chevrons/scene.gltf');
-       model.setAttribute('scale', '0.5 0.5 0.5');
+       model.setAttribute('scale', '2 2 2');
        model.setAttribute('position', '1 2 3');
        model.setAttribute('position', 'absolute');
 
