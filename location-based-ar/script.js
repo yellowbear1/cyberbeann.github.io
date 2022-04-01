@@ -132,6 +132,8 @@ function renderPlaces(places) {
     end.setAttribute('scale', '2 2 2');
     end.setAttribute('position', '1 2 3');
     end.setAttribute('position', 'absolute');
+    
+    var pos = end.object3D.position;
     scene.appendChild(end);
    
    places.forEach((place) => {
@@ -142,7 +144,7 @@ function renderPlaces(places) {
        let model = document.createElement('a-entity');
        
        model.setAttribute('id', id.toString());
-       model.setAttribute('look-at', '-1');
+       model.setAttribute('look-at', pos);
        model.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
        model.setAttribute('gltf-model', './assets/chevrons/scene.gltf');
        model.setAttribute('scale', '2 2 2');
@@ -152,6 +154,8 @@ function renderPlaces(places) {
        model.addEventListener('loaded', () => {
            window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
        });
+       
+       pos = model.object3D.position;
 
        scene.appendChild(model);
    });
