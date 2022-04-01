@@ -89,20 +89,37 @@ window.onload = () => {
 function renderPlaces(places) {
    let scene = document.querySelector('a-scene');
 
+     let end = document.createElement('a-entity');
+    end.setAttribute('id', '-1');
+    end.setAttribute('gps-entity-place', `latitude: 1.33637; longitude: 103.70246;`);
+    end.setAttribute('gltf-model', './assets/chevrons/scene.gltf');
+    end.setAttribute('scale', '2 2 2');
+    end.setAttribute('position', '1 2 3');
+    end.setAttribute('position', 'absolute');
+    
+    var pos = end.object3D.position;
+    scene.appendChild(end);
+   
    places.forEach((place) => {
        let latitude = place.location.lat;
        let longitude = place.location.lng;
+       let id = place.name;
 
        let model = document.createElement('a-entity');
+       
+       model.setAttribute('id', id.toString());
+       model.setAttribute('look-at', pos);
        model.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
        model.setAttribute('gltf-model', './assets/chevrons/scene.gltf');
-       model.setAttribute('scale', '0.5 0.5 0.5');
+       model.setAttribute('scale', '2 2 2');
        model.setAttribute('position', '1 2 3');
        model.setAttribute('position', 'absolute');
 
        model.addEventListener('loaded', () => {
            window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
        });
+       
+       pos = model.object3D.position;
 
        scene.appendChild(model);
    });
