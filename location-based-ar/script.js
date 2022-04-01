@@ -158,5 +158,6 @@ function renderPlaces(places) {
        pos = model.object3D.position;
 
        scene.appendChild(model);
+       console.log("seems to be working");
    });
 }
