@@ -132,6 +132,7 @@ function renderPlaces(places) {
     end.setAttribute('scale', '2 2 2');
     end.setAttribute('position', '1 2 3');
     end.setAttribute('position', 'absolute');
+    end.appendChild(model);
    
    places.forEach((place) => {
        let latitude = place.location.lat;
