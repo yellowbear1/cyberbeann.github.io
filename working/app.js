@@ -127,7 +127,7 @@ function renderPlaces(places) {
         });
         
         pos = model.object3D.position;
- 
+        console.log("seems to be working");
         scene.appendChild(model);
     });
 }
