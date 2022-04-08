@@ -50,7 +50,7 @@
       </div>
       <div id="map"></div>
     
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmtLCC59gzJQzRGsBvrJzsBQV99RvGIPo&libraries=places"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAR9-MJdmPer_aO0D_j3ECCaKaEv-Vokf4&libraries=places"></script>
     <script src="app.js"></script>
     </div>
     </div>
@@ -59,13 +59,7 @@
     <!-- Start of AR Camera Page -->
     <div class="ARCamera" id='AR__container'>
       <div class="AR__container">
-        <a-scene
-        vr-mode-ui="enabled: false"
-     embedded
-         arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
-         <a-camera gps-camera='maxDistance: 100' rotation-reader>
-     </a-camera>
-   </a-scene>
+        <iframe src="arjs.html" class="second-row"></iframe> 
       </div>
     </div>
     <!-- End of AR Camera Page -->
