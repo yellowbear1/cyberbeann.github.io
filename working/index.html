@@ -1,24 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>GeoAR.js demo</title>
-    <script src='https://aframe.io/releases/0.9.2/aframe.min.js'></script>
-    <script src="https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
-    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
-    <script>
-        THREEx.ArToolkitContext.baseURL = 'https://raw.githack.com/jeromeetienne/ar.js/master/three.js/'
-    </script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopVira</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./animate.min.css">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="shortcut icon" href="./assets/icon-192.png" type="image/x-icon">
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
 </head>
+<body>
+  <div class="container">
+    <!-- welcome page -->
+      <div class="welcome" id='welcome__container'>
+        <div class="welcome__container">
+          <h1 class="logo">Shopvira</h1>
+          <img src="./assets/login.png" alt="" class="animate__animated animate__bounceInLeft">
+          <h3 class="animate__animated animate__bounceInRight">Welcome to shopvira</h3>
+          <p>An exciting place for the whole family to shop <br /> Enrich your shopping list wisely</p>
+          <button id="welcome__page__button">Next</button>
+        </div>
+      </div>
+    <!-- End of Welcome Page -->
+    
+    
+    <!-- Select destination page -->
+    <div class="select__dest" id='select__dest__container'>
+      <div class="select__dest__container">
+        <div id="floating-panel">
+        <div>
+          <div>
+            <b>From</b>
+              <input type="text" id="from" placeholder="Origin"> 
+            </div>
+          </div>
+        <div>
+          <div>
+            <b>To  </b>
+              <input type="text" id="to" placeholder="Destination"> 
+        </div>
+      </div>
+      <b>Get Route</b>
+      <button id="click">Route</button>
+      <button id="goCamera">AR Mode</button>
+      </div>
+      <div id="map"></div>
+    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmtLCC59gzJQzRGsBvrJzsBQV99RvGIPo&libraries=places"></script>
+    <script src="app.js"></script>
+    </div>
+    </div>
+    <!-- End of Select destination page -->
 
-<script src="./script.js"></script>
-<body style='margin: 0; overflow: hidden;'>
-    <a-scene
-       vr-mode-ui="enabled: false"
-		embedded
-        arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
-        <a-camera gps-camera rotation-reader>
-		</a-camera>
-	</a-scene>
+    <!-- Start of AR Camera Page -->
+    <div class="ARCamera" id='AR__container'>
+      <div class="AR__container">
+        <a-scene
+        vr-mode-ui="enabled: false"
+     embedded
+         arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
+         <a-camera gps-camera='maxDistance: 100' rotation-reader>
+     </a-camera>
+   </a-scene>
+      </div>
+    </div>
+    <!-- End of AR Camera Page -->
+      
+    
+  </div>
+  <script type="module" src="./main.js"></script>
 </body>
+</html>
