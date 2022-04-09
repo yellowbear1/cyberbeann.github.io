@@ -27,7 +27,7 @@
   }
   
   .welcome img{
-    height: 45vh;
+    height: 55vh;
     object-fit: contain;
     margin: 0 auto;
     display: flex;
@@ -82,6 +82,8 @@
     align-items: center;
     height: 60px;
     border-radius: 60px;
+    position: absolute;
+    bottom: 0;
   }
 
   #map {
@@ -92,7 +94,7 @@
 
 
 #floating-panel {
-    position: absolute;
+    position: relative;
     top: 10px;
     z-index: 5;
     border: 1px solid #999;
