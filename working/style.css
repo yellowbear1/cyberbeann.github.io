@@ -115,7 +115,8 @@
 
 }
 
-.bk-btn {
+.ARCamera {
+    z-index: 95;
     $bkBtnSize: 52px;
     .bk-btn {
       height: $bkBtnSize;
@@ -141,7 +142,6 @@
         left: $bkBtnSize*0.44;
       }
     }
-    z-index: 95;
 }
 
 .AR__container {
