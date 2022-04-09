@@ -117,7 +117,7 @@
 
 
 
-    $bkBtnSize: 52px;
+    $bkBtnSize: 300px;
     .bk-btn {
       height: $bkBtnSize;
       width: $bkBtnSize;
