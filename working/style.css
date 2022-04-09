@@ -115,7 +115,7 @@
 
 }
 
-.ARCamera {
+#back {
     z-index: 95;
     $bkBtnSize: 52px;
     .bk-btn {
