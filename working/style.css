@@ -141,6 +141,7 @@
         left: $bkBtnSize*0.44;
       }
     }
+    z-index: 5;
 }
 
 .AR__container {
