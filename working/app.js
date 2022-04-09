@@ -1,11 +1,16 @@
 var mylatlng = {lat:1.3521, lng:  103.8198};
+
+var map, marker;
+
 var mapOptions = {
     center: mylatlng,
     zoom: 14,
     mapTypeId: google.maps.MapTypeId.ROADMAP
 };
 
-var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+var places = [];
+
+map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
 var directionsService = new google.maps.DirectionsService();
 
@@ -41,9 +46,8 @@ function calcRoute() {
         if (status == google.maps.DirectionsStatus.OK) {
             directionDisplay.setDirections(result);
             const arr = getCoordinates(result);
-            const places = arrToPlaces(arr);
+            places = arrToPlaces(arr);
             console.log(places);
-            renderPlaces(places);
         } else {
             directionDisplay.setDirections({routes: []});
 
@@ -90,44 +94,57 @@ var autocomplete1 = new google.maps.places.Autocomplete(input1);
 var input2 = document.getElementById("to");
 var autocomplete2 = new google.maps.places.Autocomplete(input2);
 
-function renderPlaces(places) {
-    let scene = document.querySelector('a-scene');
-     
-     let end = document.createElement('a-entity');
-     let end_lat = places[0].location.lat;
-     let end_lng = places[0].location.lng;
-
-     end.setAttribute('id', '-1');
-     end.setAttribute('gps-entity-place', `latitude: ${end_lat}; longitude: ${end_lng};`);
-     end.setAttribute('gltf-model', './assets/chevrons/scene.gltf');
-     end.setAttribute('scale', '2 2 2');
-     end.setAttribute('position', '1 2 3');
-     end.setAttribute('position', 'absolute');
-     
-     var pos = end.object3D.position;
-     scene.appendChild(end);
-    
-    places.forEach((place) => {
-        let latitude = place.location.lat;
-        let longitude = place.location.lng;
-        let id = place.name;
- 
-        let model = document.createElement('a-entity');
-        
-        model.setAttribute('id', id.toString());
-        model.setAttribute('look-at', pos);
-        model.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-        model.setAttribute('gltf-model', './assets/chevrons/scene.gltf');
-        model.setAttribute('scale', '2 2 2');
-        model.setAttribute('position', '1 2 3');
-        model.setAttribute('position', 'absolute');
- 
-        model.addEventListener('loaded', () => {
-            window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
+function getCurrentLocation() {
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+            const pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+            };
+            marker = new google.maps.Marker({
+                position: pos,
+                map: map,
+                title: 'Your position'
+            });
+            map.setCenter(pos);
+        },
+        () => {
+            console.log("errored");
         });
-        
-        pos = model.object3D.position;
-        console.log("seems to be working");
-        scene.appendChild(model);
-    });
 }
+
+function getUserLocation(map) {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            var point = new google.maps.LatLng(position.coords.latitude,
+                position.coords.longitude);
+
+            if (typeof getUserLocation.user_marker == 'undefined') {
+                marker = new google.maps.Marker({
+                    position:point,
+                    map:map,
+                    title: 'update'
+                });
+                getUserLocation.user_marker = marker;
+                getUserLocation.user_marker_window = new google.maps.InfoWindow({
+                    content:'You'
+                });
+
+                google.maps.event.addListener(getUserLocation.user_marker, 'click', function () {
+                    getUserLocation.user_marker_window.open(getUserLocation.user_marker);
+                });
+            }
+            getUserLocation.user_marker.setPosition(point);
+        });
+    }
+}
+
+if (navigator.geolocation) {
+    getUserLocation(map);
+    setInterval(function () {
+        getUserLocation(map);
+    }, 5000);
+}
+
+document.getElementById("currentLocation").addEventListener("click",() => getCurrentLocation());
+
