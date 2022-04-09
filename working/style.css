@@ -115,7 +115,7 @@
 
 }
 
-#back {
+.bk-btn {
     $bkBtnSize: 52px;
     .bk-btn {
       height: $bkBtnSize;
