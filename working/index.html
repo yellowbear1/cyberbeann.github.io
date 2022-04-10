@@ -15,45 +15,44 @@
 </head>
 <body>
   <div class="container">
-    <!-- welcome page -->
-      <div class="welcome" id='welcome__container'>
-        <div class="welcome__container">
-          <h1 class="logo">SmarTravel</h1>
-          <img src="./assets/wheelchair-moving-cropped.gif" alt="" class="animate__animated animate__bounceInLeft">
-          <h3 class="animate__animated animate__bounceInRight">Welcome to SmarTravel</h3>
-          <p>Enrich your wayfinding with real time navigational directions <br /> An exciting place for you to steer around</p>
-          <button id="welcome__page__button">Next</button>
-        </div>
-      </div>
-    <!-- End of Welcome Page -->
-    
-    
-    <!-- Select destination page -->
-    <div class="select__dest" id='select__dest__container'>
-      <div class="select__dest__container">
-        <div id="floating-panel">
-        <div>
-          <div>
-            <b>From</b>
-              <input type="text" id="from" placeholder="Origin"> 
-            </div>
+        <!-- welcome page -->
+        <div class="welcome" id='welcome__container'>
+          <div class="welcome__container">
+            <h1 class="logo">SmarTravel</h1>
+            <img src="./assets/wheelchair-moving-cropped.gif" alt="" class="animate__animated animate__bounceInLeft">
+            <h3 class="animate__animated animate__bounceInRight">Welcome to SmarTravel</h3>
+            <p>Enrich your wayfinding with real time navigational directions <br /> An exciting place for you to steer around</p>
+            <button id="welcome__page__button">Next</button>
           </div>
-        <div>
-          <div>
-            <b>To  </b>
-              <input type="text" id="to" placeholder="Destination"> 
         </div>
-      </div>
-      <b>Get Route</b>
-      <button id="click">Route</button>
-      <button id="currentLocation">Current Location</button>
-      </div>
-      <button id="goCamera">AR Mode</button>
-      <div id="map"></div>
-      
+      <!-- End of Welcome Page -->
       
     
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmtLCC59gzJQzRGsBvrJzsBQV99RvGIPo&libraries=places"></script>
+    
+      <!-- Select destination page -->
+      <div class="select__dest" id='select__dest__container'>
+        <div class="select__dest__container">
+          <div id="floating-panel">
+          <div>
+            <div>
+              <b>From</b>
+                <input type="text" id="from" placeholder="Origin"> 
+              </div>
+            </div>
+          <div>
+            <div>
+              <b>To  </b>
+                <input type="text" id="to" placeholder="Destination"> 
+          </div>
+        </div>
+        <b>Get Route</b>
+        <button id="click">Route</button>
+        <button id="currentLocation">Current Location</button>
+        </div>
+        <button id="goCamera">AR Mode</button>
+        <div id="map"></div>
+    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATXE3fgR6yhV5yq6WzzaLFzf554MD4Bag&libraries=places"></script>
     <script src="app.js"></script>
     </div>
     </div>
@@ -62,16 +61,15 @@
     <!-- Start of AR Camera Page -->
     <div class="ARCamera" id='AR__container'>
       <div class="AR__container">
-        
-        
-        <div class="bk-btn" id='back'>
-          <div class="bk-btn-triangle">
+
+        <div class="container2">
+          <div title="Back to Menu" class="backArrow" id="back">
+            &#10140;
           </div>
-          <div class="bk-btn-bar">
-          </div>
+          <h1 id="distance">Select Route</h1>
         </div>
-        <button>test</button>
-        <iframe src="arjs.html" class="second-row"></iframe>
+        
+        <iframe src="arjs.html" class="second-row"></iframe> 
       </div>
     </div>
     <!-- End of AR Camera Page -->
