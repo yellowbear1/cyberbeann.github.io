@@ -100,6 +100,8 @@
     align-items: center;
     height: 60px;
     border-radius: 60px;
+    position: relative;
+    bottom: 10px;
     z-index: 5;
   }
 
