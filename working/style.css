@@ -100,7 +100,7 @@
     align-items: center;
     height: 60px;
     border-radius: 60px;
-    position: relative;
+    position: absolute;
     bottom: 10px;
     margin-left: -50px;
     z-index: 5;
