@@ -17,6 +17,7 @@ const leaveWelcomePage = (e) => {
 const goARCamera = (e) => {
   selectDestPageContainer.style.transform = "translateX(-90%)";
   selectDestPageContainer.addEventListener("transitionend", ()=>{welcomePageContainer.style.display="none"})
+  selectDestPageContainer.style.display = "none";
 
   ARCameraPageContainer.style.transform = "translateX(0)";
   ARCameraPageContainer.style.display = "block"
