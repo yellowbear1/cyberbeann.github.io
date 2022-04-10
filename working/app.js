@@ -139,12 +139,33 @@ function getUserLocation(map) {
     }
 }
 
+function calculateDist() {
+    if (places.length == 0) {
+
+    } else {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var p1 = new google.maps.LatLng(position.coords.latitude,
+                    position.coords.longitude);
+                var p2 = new google.maps.LatLng(places[0].location.lat, places[0].location.lng);
+                document.getElementById("distance").innerHTML = Math.round(google.maps.geometry.spherical.computeDistanceBetween(p1, p2)) + "m";
+                console.log(google.maps.geometry.spherical.computeDistanceBetween(p1, p2));
+            });
+        }
+    }
+}
+
+
 if (navigator.geolocation) {
+    calculateDist();
     getUserLocation(map);
     setInterval(function () {
         getUserLocation(map);
+        calculateDist();
     }, 5000);
 }
+
+
 
 document.getElementById("currentLocation").addEventListener("click",() => getCurrentLocation());
 
