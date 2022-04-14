@@ -1,6 +1,44 @@
+const jlgRoute = [ 103.72244,1.3414,
+    103.72245,1.34138,
+    103.72252,1.34133,
+    103.72267,1.34123,
+    103.72275,1.34117,
+    103.72318,1.34102,
+    103.72329,1.341,
+    103.72342,1.34099,
+    103.72364,1.34096,
+    103.72364,1.34091,
+    103.72364,1.34089,
+    103.72363,1.34086,
+    103.72362,1.34083,
+    103.72361,1.3408,
+    103.72369,1.34077,
+    103.72378,1.34072,
+    103.72388,1.34065,
+    103.72396,1.34057,
+    103.72405,1.34044,
+    103.72412,1.3403,
+    103.7242,1.34013,
+    103.72427,1.34003,
+    103.72432,1.33999,
+    103.72437,1.34003,
+    103.72439,1.34005,
+    103.7244,1.34006,
+    103.72439,1.34012,
+    103.72438,1.34015,
+    103.72438,1.34022,
+    103.72439,1.34028,
+    103.72439,1.34029]
+
 var mylatlng = {lat:1.3521, lng:  103.8198};
 
 var map, marker;
+
+var commMarkerO, commMarkerD, flightPath;
+
+let customRoute = document.querySelector("#route_name");
+let origin = document.querySelector("#from");
+let dest = document.querySelector("#to");
 
 var mapOptions = {
     center: mylatlng,
@@ -42,18 +80,108 @@ function calcRoute() {
         unitSystem: google.maps.UnitSystem.METRIC
     }
 
-    directionsService.route(request, (result,status) => {
-        if (status == google.maps.DirectionsStatus.OK) {
-            directionDisplay.setDirections(result);
-            const arr = getCoordinates(result);
-            places = arrToPlaces(arr);
-            console.log(places);
-        } else {
-            directionDisplay.setDirections({routes: []});
+    if (customRoute.value == "none") {
+        directionsService.route(request, (result,status) => {
+            if (status == google.maps.DirectionsStatus.OK) {
+                directionDisplay.setDirections(result);
+                const arr = getCoordinates(result);
+                places = arrToPlaces(arr);
+                if (commMarkerD) {
+                    commMarkerD.setMap(null);
+                    commMarkerO.setMap(null);
+                    flightPath.setMap(null);
+                }
+            } else {
+                directionDisplay.setDirections({routes: []});
 
-        }
-    });
+            }
+        });
+    }
+
+    else if (customRoute.value == "jlg") {
+        directionDisplay.setDirections({routes: []});
+        plotRoute(jlgRoute);
+    }
 }
+
+function zoomToObject(obj){
+    var bounds = new google.maps.LatLngBounds();
+    var points = obj.getPath().getArray();
+    for (var n = 0; n < points.length ; n++){
+        bounds.extend(points[n]);
+    }
+    map.fitBounds(bounds);
+}
+
+function plotRoute(arr) {
+    places = arrToPlaces(arr);
+    console.log(places);
+    const posO = {
+        lat: places[places.length-1].location.lat,
+        lng:  places[places.length-1].location.lng
+      };
+    commMarkerO = new google.maps.Marker({
+        position: posO,
+        map: map,
+        title: 'Origin',
+        label: 'A'
+    });
+
+    const posD = {
+        lat: places[0].location.lat,
+        lng:  places[0].location.lng
+      };
+    commMarkerD = new google.maps.Marker({
+        position: posD,
+        map: map,
+        title: 'Destination',
+        label: 'B'
+    });
+
+    const flightPlanCoordinates = arrToPolyline(arr);
+    console.log(flightPlanCoordinates);
+    flightPath = new google.maps.Polyline({
+        path: flightPlanCoordinates,
+        geodesic: true,
+        strokeColor: '#0088FF',
+       strokeWeight: 6,
+       strokeOpacity: 0.6
+      });
+
+      flightPath.setMap(map);
+      zoomToObject(flightPath);
+}
+
+function arrToPolyline(arr) {
+    const arr2 = [];
+
+    let count = 0;
+
+    var temp = new Array();
+    for (let i = 0; i < arr.length;i++) {
+    
+        if (count == 0) {
+            temp.push(arr[i]);
+            count += 1;
+        } else if (count == 1) {
+            temp.push(arr[i]);
+            count += 1;
+        }
+        if (count == 2) {
+            arr2.push(temp);
+            count = 0;
+            temp = [];
+        }
+    }
+
+    const polyline = [];
+    for (let i = 0; i < arr2.length; i++) {
+        polyline.push({lat: arr2[i][1], lng: arr2[i][0]});
+    }
+
+    return polyline;
+}
+
 
 function arrToPlaces(arr1) {
     const arr2 = [];
@@ -164,6 +292,18 @@ if (navigator.geolocation) {
         calculateDist();
     }, 5000);
 }
+
+customRoute.onchange = function() {
+    let d = customRoute.value;
+    if (d === "none") {
+      origin.value = "";
+      dest.value = "";
+    } else if (d === "jlg") {
+      origin.value = "Yuan Ching Rd Bus Stop";
+      dest.value = "Clusia Cove";
+    }
+  }
+
 
 
 
