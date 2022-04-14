@@ -197,7 +197,9 @@ width: 100vw;
 }
 
 
-#floating-panel {
+#selectHead {
+  color: #FF7466;
+  font-size: 1.5em;
   margin: 0 auto;
   position: absolute;
   z-index: 5;
@@ -205,7 +207,7 @@ width: 100vw;
   background-color: white;
   text-align: center;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  line-height: 50px;
+  line-height: 35px;
   width: 100vw;
 }
 
