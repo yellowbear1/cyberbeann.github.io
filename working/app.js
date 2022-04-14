@@ -91,8 +91,7 @@ function calcRoute() {
                     commMarkerO.setMap(null);
                     flightPath.setMap(null);
                 }
-                document.getElementById("selectHead").innerHTML = "From " + document.getElementById("from").value + " to " + document.getElementById("to").value
-                + "<br /> Distance: " + result.routes[0].legs[0].distance.text + "<br />Duration: " + result.routes[0].legs[0].duration.text;
+                document.getElementById("selectHead").innerHTML = "Distance: " + result.routes[0].legs[0].distance.text + "<br />Duration: " + result.routes[0].legs[0].duration.text;
             } else {
                 directionDisplay.setDirections({routes: []});
                 document.getElementById("selectHead").innerHTML = "Try selecting route again";
@@ -104,8 +103,7 @@ function calcRoute() {
     else if (customRoute.value == "jlg") {
         directionDisplay.setDirections({routes: []});
         plotRoute(jlgRoute);
-        document.getElementById("selectHead").innerHTML = "From " + document.getElementById("from").value + " to " + document.getElementById("to").value
-                + "<br /> Distance: " + " 0.37km" + "<br />Duration: " +"5 mins";
+        document.getElementById("selectHead").innerHTML = "Distance: " + " 0.37km" + "<br />Duration: " +"5 mins";
     }
 }
 
