@@ -5,6 +5,10 @@ let ARbutton = document.querySelector("#goCamera");
 export let ARCameraPageContainer = document.querySelector("#AR__container");
 let ARtoSelect = document.querySelector("#back");
 let homeButton = document.querySelector("#home__button");
+export let addItemForm = document.querySelector("#add__item__form");
+export let addItemFormContainer = document.querySelector("#add__item__form__container");
+let bottomNavPlusButton = document.querySelector("#bottom__nav__plus");
+let closeAddItemButton = document.querySelector("#close__add__item__form");
 
 const leaveWelcomePage = (e) => {
   welcomePageContainer.style.transform = "translateX(-90%)";
@@ -36,15 +40,22 @@ const goHome = () => {
   location.reload();
 }
 
+const hideAddItemForm = (e) => {
+  addItemFormContainer.style.display = "none";
+}
 
 // on render
 window.addEventListener('DOMContentLoaded', ()=>{
   selectDestPageContainer.style.display = "none";
   ARCameraPageContainer.style.display = "none";
+  addItemFormContainer.style.display = "none";
 })
+
 
 
 // Event Listeners
 welcomeButton.addEventListener('click', leaveWelcomePage);
 ARbutton.addEventListener('click', goARCamera);
 back.addEventListener('click', ARCamToSelectDest);
+bottomNavPlusButton.addEventListener('click', ()=> {addItemFormContainer.style.display = "block"});
+closeAddItemButton.addEventListener('click', hideAddItemForm);
