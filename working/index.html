@@ -30,29 +30,50 @@
     
     
       <!-- Select destination page -->
-      <div class="select__dest" id='select__dest__container'>
+      <div class="select__dest animate__animated animate__bounceInRight" id='select__dest__container'>
         <div class="select__dest__container">
-          <div id="floating-panel">
-          <div>
-            <div>
-              <b>From</b>
-                <input type="text" id="from" placeholder="Origin"> 
-              </div>
-            </div>
-          <div>
-            <div>
-              <b>To  </b>
-                <input type="text" id="to" placeholder="Destination"> 
-          </div>
-        </div>
-        <b>Get Route</b>
-        <button id="click">Route</button>
-        <button id="currentLocation">Current Location</button>
-        </div>
-        <button id="goCamera">AR Mode</button>
+         
         <div id="map"></div>
+        <!-- bottom navigation -->
+        <div class="bottom__nav">
+          <img id="currentLocation" class="btn" src="./assets/curr-location-icon.png" width="30" height="30" viewBox="0 0 24 24"></img>
+          <span id="bottom__nav__plus" class="btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg>
+          </span>
+          <img id="goCamera" class="btn" src="./assets/ar-mode-icon.png" width="30" height="30" viewBox="0 0 24 24"></img>
+          <span id="back__button">
+            <img src="./assets/images/back-icon.png" alt="">
+          </span>
+        </div>
+  <!-- End of Bottom navigation -->
+
+   <!-- add item form -->
+   <div class="form__container animate__animated animate__backInUp" id="add__item__form__container">
+    <form id="add__item__form" name="add__item" onsubmit="return false;">
+      <label for="">
+        Community Routes:
+        <select name="communityRoute" placeholder="Leave blank for custom routing" id="route_name">
+          <option value="none">Custom Route</option>
+          <option value="jlg">Jurong Lake Garden</option>
+        </select>
+      </label>
+      <label for="">
+        From:
+        <input type="text" id="from" placeholder="Origin" required>
+      </label>
+      <label for="">
+        To:
+        <input type="text" id="to" placeholder="Destination" required>
+      </label>
+      <div class="btn">
+        <button type="submit" id="click">Route</button>
+        <button id="close__add__item__form">Back</button>
+      </div>
+    </form>
+  </div>
+<!-- end of add item form -->
     
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATXE3fgR6yhV5yq6WzzaLFzf554MD4Bag&libraries=places"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmtLCC59gzJQzRGsBvrJzsBQV99RvGIPo&libraries=places"></script>
     <script src="app.js"></script>
     </div>
     </div>
