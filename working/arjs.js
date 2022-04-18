@@ -18,7 +18,7 @@ function renderPlaces(places) {
      end.setAttribute('id', '-1');
      end.setAttribute('gps-entity-place', `latitude: ${end_lat}; longitude: ${end_lng};`);
      end.setAttribute('gltf-model', './assets/map_pointer_3d_icon/scene.gltf');
-     end.setAttribute('scale', '2 2 2');
+     end.setAttribute('scale', '0.5 0.5 0.5');
      end.setAttribute('position', '1 2 3');
      end.setAttribute('position', 'absolute');
      
@@ -36,7 +36,7 @@ function renderPlaces(places) {
         model.setAttribute('look-at', pos);
         model.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
         model.setAttribute('gltf-model', './assets/red_arrow_chevrons_wayfinding/scene.gltf');
-        model.setAttribute('scale', '2 2 2');
+        model.setAttribute('scale', '0.5 0.5 0.5');
         model.setAttribute('position', '1 2 3');
         model.setAttribute('position', 'absolute');
  
