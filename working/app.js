@@ -232,11 +232,7 @@ function getCurrentLocation() {
               lat: position.coords.latitude,
               lng: position.coords.longitude,
             };
-            marker = new google.maps.Marker({
-                position: pos,
-                map: map,
-                title: 'Your position'
-            });
+            
             map.setCenter(pos);
         },
         () => {
@@ -279,7 +275,12 @@ function calculateDist() {
                 var p1 = new google.maps.LatLng(position.coords.latitude,
                     position.coords.longitude);
                 var p2 = new google.maps.LatLng(places[0].location.lat, places[0].location.lng);
-                document.getElementById("distance").innerHTML = Math.round(google.maps.geometry.spherical.computeDistanceBetween(p1, p2)) + "m";
+                const dist =  Math.round(google.maps.geometry.spherical.computeDistanceBetween(p1, p2));
+                if (dist == 0) {
+                    document.getElementById("distance").innerHTML = "You have arrived!"
+                } else {
+                    document.getElementById("distance").innerHTML = dist + "m";
+                }
                 console.log(google.maps.geometry.spherical.computeDistanceBetween(p1, p2));
             });
         }
@@ -310,5 +311,4 @@ customRoute.onchange = function() {
 
 
 
-document.getElementById("currentLocation").addEventListener("click",() => getCurrentLocation());
-
+document.getElementById("currentLocation").addEventListener("click",() => { getCurrentLocation(); getUserLocation(map); });
