@@ -58,6 +58,7 @@ var mapOptions = {
 };
 
 var places = [];
+var ramps = [];
 
 map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
@@ -96,6 +97,7 @@ function calcRoute() {
             if (status == google.maps.DirectionsStatus.OK) {
                 directionDisplay.setDirections(result);
                 const arr = getCoordinates(result);
+                ramps = [];
                 places = arrToPlaces(arr);
                 if (commMarkerD) {
                     commMarkerD.setMap(null);
@@ -119,7 +121,7 @@ function calcRoute() {
 function plotCommunityRoute(route) {
     directionDisplay.setDirections({routes: []});
         plotRoute(route.coords);
-        plotRamps(route.ramps);        
+        ramps = arrToPlaces(route.ramps);       
         document.getElementById("selectHead").innerHTML = "Distance: " + route.distance + "<br />Duration: " + route.duration 
         + "<br />Difficulty: ";
         
@@ -134,9 +136,6 @@ function plotCommunityRoute(route) {
 
 }
 
-function plotRamps(arr) {
-    return
-}
 
 function zoomToObject(obj){
     var bounds = new google.maps.LatLngBounds();
