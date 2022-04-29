@@ -1,4 +1,14 @@
-const jlgRoute = [ 103.72244,1.3414,
+const jlgRoute = {
+    distance:
+    "0.37km",
+    duration:
+    "5 mins",
+    difficulty:
+    "Easy",
+    ramps:
+    [ 103.72318,1.34102],
+    coords:
+    [ 103.72244,1.3414,
     103.72245,1.34138,
     103.72252,1.34133,
     103.72267,1.34123,
@@ -29,6 +39,7 @@ const jlgRoute = [ 103.72244,1.3414,
     103.72438,1.34022,
     103.72439,1.34028,
     103.72439,1.34029]
+};
 
 var mylatlng = {lat:1.3521, lng:  103.8198};
 
@@ -101,10 +112,30 @@ function calcRoute() {
     }
 
     else if (customRoute.value == "jlg") {
-        directionDisplay.setDirections({routes: []});
-        plotRoute(jlgRoute);
-        document.getElementById("selectHead").innerHTML = "Distance: " + " 0.37km" + "<br />Duration: " +"5 mins" + "<br />Difficulty: " + "Happy";
+        plotCommunityRoute(jlgRoute);
     }
+}
+
+function plotCommunityRoute(route) {
+    directionDisplay.setDirections({routes: []});
+        plotRoute(route.coords);
+        plotRamps(route.ramps);        
+        document.getElementById("selectHead").innerHTML = "Distance: " + route.distance + "<br />Duration: " + route.duration 
+        + "<br />Difficulty: ";
+        
+        if (route.difficulty == "Easy") {
+            document.getElementById("selectHead").innerHTML = document.getElementById("selectHead").innerHTML 
+            + '<i class="fa-solid fa-face-smile"></i>';
+        } else {
+            document.getElementById("selectHead").innerHTML = document.getElementById("selectHead").innerHTML 
+            + '<i class="fa-solid fa-face-frown"></i>';
+        }
+        
+
+}
+
+function plotRamps(arr) {
+    return
 }
 
 function zoomToObject(obj){
