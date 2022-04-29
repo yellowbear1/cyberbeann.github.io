@@ -103,7 +103,7 @@ function calcRoute() {
     else if (customRoute.value == "jlg") {
         directionDisplay.setDirections({routes: []});
         plotRoute(jlgRoute);
-        document.getElementById("selectHead").innerHTML = "Distance: " + " 0.37km" + "<br />Duration: " +"5 mins";
+        document.getElementById("selectHead").innerHTML = "Distance: " + " 0.37km" + "<br />Duration: " +"5 mins" + "<br />Difficulty: " + "Happy";
     }
 }
 
@@ -276,7 +276,7 @@ function calculateDist() {
                     position.coords.longitude);
                 var p2 = new google.maps.LatLng(places[0].location.lat, places[0].location.lng);
                 const dist =  Math.round(google.maps.geometry.spherical.computeDistanceBetween(p1, p2));
-                if (dist == 0) {
+                if (dist <= 10) {
                     document.getElementById("distance").innerHTML = "You have arrived!"
                 } else {
                     document.getElementById("distance").innerHTML = dist + "m";
