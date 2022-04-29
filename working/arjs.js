@@ -2,8 +2,28 @@ window.parent.document.getElementById("goCamera").addEventListener("click", () =
 
 function loadRoute() {
     var arr = window.parent.window.places;
+    var ramps = window.parent.window.ramps;
     renderPlaces(arr);
+    renderRamps(ramps);
     console.log("working");
+}
+
+function renderRamps(places) {
+    if (places.length == 0) {
+        console.log("no ramps");
+        return
+    }
+    let scene = document.querySelector('a-scene');
+    
+    places.forEach((place) => {
+        let latitude = place.location.lat;
+        let longitude = place.location.lng;
+    
+        let model = document.createElement('a-text');
+        model.setAttribute('look-at', '[gps-camera]');
+        model.setAttribute('scale', '50 50 50');
+        model.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+    });
 }
 
 
@@ -47,6 +67,6 @@ function renderPlaces(places) {
         pos = model.object3D.position;
  
         scene.appendChild(model);
-        console.log("seems to be working");
+        
     });
 }
