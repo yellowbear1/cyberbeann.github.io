@@ -313,6 +313,34 @@ function getUserLocation(map) {
                 });
             }
             getUserLocation.user_marker.setPosition(point);
+            return point;
+        });
+    }
+}
+
+function setCurrentLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            var point = new google.maps.LatLng(position.coords.latitude,
+                position.coords.longitude);
+
+            if (typeof getUserLocation.user_marker == 'undefined') {
+                marker = new google.maps.Marker({
+                    position:point,
+                    map:map,
+                    title: 'update'
+                });
+                getUserLocation.user_marker = marker;
+                getUserLocation.user_marker_window = new google.maps.InfoWindow({
+                    content:'You'
+                });
+
+                google.maps.event.addListener(getUserLocation.user_marker, 'click', function () {
+                    getUserLocation.user_marker_window.open(getUserLocation.user_marker);
+                });
+            }
+            getUserLocation.user_marker.setPosition(point);
+            origin.value = point.toString().replace(/[()]/g, "");
         });
     }
 }
@@ -352,15 +380,24 @@ if (navigator.geolocation) {
 customRoute.onchange = function() {
     let d = customRoute.value;
     if (d === "none") {
+      origin.disabled = false;
+      dest.disabled = false;
       origin.value = "";
       dest.value = "";
+      document.getElementById("set_curr_loc").disabled = false;
     } else if (d === "jlg") {
+      origin.disabled = true;
+      dest.disabled = true;
       origin.value = "Yuan Ching Rd Bus Stop";
       dest.value = "Clusia Cove";
+      document.getElementById("set_curr_loc").disabled = true;
     }
-  }
+}
+
+
 
 
 
 
 document.getElementById("currentLocation").addEventListener("click",() => { getCurrentLocation(); getUserLocation(map); });
+document.getElementById("set_curr_loc").addEventListener("click", setCurrentLocation);
