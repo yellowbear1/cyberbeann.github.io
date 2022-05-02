@@ -137,6 +137,27 @@ function calcRoute() {
     else if (customRoute.value == "jlg") {
         plotCommunityRoute(jlgRoute);
     }
+
+    else if (customRoute.value == "jw") {
+        directionsService.route(request, (result,status) => {
+            if (status == google.maps.DirectionsStatus.OK) {
+                directionDisplay.setDirections(result);
+                const arr = getCoordinates(result);
+                ramps = arrToPlaces(arr);
+                places = [];
+                if (commMarkerD) {
+                    commMarkerD.setMap(null);
+                    commMarkerO.setMap(null);
+                    flightPath.setMap(null);
+                }
+                document.getElementById("selectHead").innerHTML = "Distance: " + result.routes[0].legs[0].distance.text + "<br />Duration: " + result.routes[0].legs[0].duration.text;
+            } else {
+                directionDisplay.setDirections({routes: []});
+                document.getElementById("selectHead").innerHTML = "Try selecting route again";
+
+            }
+        });
+    }
 }
 
 function plotCommunityRoute(route) {
@@ -390,6 +411,12 @@ customRoute.onchange = function() {
       dest.disabled = true;
       origin.value = "Yuan Ching Rd Bus Stop";
       dest.value = "Clusia Cove";
+      document.getElementById("set_curr_loc").disabled = true;
+    } else if (d === "jw") {
+      origin.disabled = true;
+      dest.disabled = true;
+      origin.value = "644659";
+      dest.value = "Boon Lay MRT";
       document.getElementById("set_curr_loc").disabled = true;
     }
 }
