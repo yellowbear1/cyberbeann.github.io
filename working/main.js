@@ -9,6 +9,9 @@ export let addItemForm = document.querySelector("#add__item__form");
 export let addItemFormContainer = document.querySelector("#add__item__form__container");
 let bottomNavPlusButton = document.querySelector("#bottom__nav__plus");
 let closeAddItemButton = document.querySelector("#close__add__item__form");
+let endPageContainer = document.querySelector("#end__container");
+let endHappyButton = document.querySelector("#end_trip_happy_button");
+let endSadButton = document.querySelector("#end_trip_sad_button");
 
 const leaveWelcomePage = (e) => {
   welcomePageContainer.style.transform = "translateX(-90%)";
@@ -36,6 +39,15 @@ const ARCamToSelectDest = (e) => {
   selectDestPageContainer.style.display = "block"
 }
 
+const ARCamToEndPage = (e) => {
+  ARCameraPageContainer.style.transform = "translateX(-90%)";
+  ARCameraPageContainer.addEventListener("transitionend", ()=>{welcomePageContainer.style.display="none"})
+  ARCameraPageContainer.style.display = "none";
+
+  endPageContainer.style.transform = "translateX(0)";
+  endPageContainer.style.display = "block"
+}
+
 const goHome = () => {
   location.reload();
 }
@@ -49,6 +61,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
   selectDestPageContainer.style.display = "none";
   ARCameraPageContainer.style.display = "none";
   addItemFormContainer.style.display = "none";
+  endPageContainer.style.display = "none";
 })
 
 
@@ -56,6 +69,8 @@ window.addEventListener('DOMContentLoaded', ()=>{
 // Event Listeners
 welcomeButton.addEventListener('click', leaveWelcomePage);
 ARbutton.addEventListener('click', goARCamera);
-back.addEventListener('click', ARCamToSelectDest);
+back.addEventListener('click', ARCamToEndPage);
 bottomNavPlusButton.addEventListener('click', ()=> {addItemFormContainer.style.display = "block"});
 closeAddItemButton.addEventListener('click', hideAddItemForm);
+endHappyButton.addEventListener('click', goHome);
+endSadButton.addEventListener('click', goHome);
