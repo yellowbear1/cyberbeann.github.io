@@ -319,6 +319,11 @@ display: flex; width: 100%; height: 100%; flex-direction: column; overflow: hidd
   height: 60px;
   border-radius: 60px;
 }
+
+.end #end_trip_happy_button {
+  background-color: green;
+}
+
 /* End of end section */
 
 @media(min-height: 570px){
