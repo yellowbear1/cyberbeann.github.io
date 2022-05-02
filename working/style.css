@@ -168,6 +168,23 @@
   outline: none;
 }
 
+.form__container .input_origin {
+  display:flex;
+  flex-direction:row;
+}
+
+.form__container .input_origin #from {
+  flex-grow:2;
+}
+
+.form__container .input_origin #set_curr_loc{
+  padding: 1em;
+  margin-top: 5px;
+  background-color: #FF7466;
+  border: none;
+  color: white;
+}
+
 .form__container form .btn{
   display: flex;
   align-items: center;
@@ -323,6 +340,7 @@ display: flex; width: 100%; height: 100%; flex-direction: column; overflow: hidd
 .end #end_trip_happy_button {
   background-color: green;
 }
+
 
 /* End of end section */
 
