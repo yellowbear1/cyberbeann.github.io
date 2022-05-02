@@ -271,6 +271,55 @@ display: flex; width: 100%; height: 100%; flex-direction: column; overflow: hidd
 
 .second-row { flex-grow: 1; border: none; margin: 0; padding: 0; }
 
+.end{
+  height: 100%;
+  width: 100vw;
+  transition: 0.4s;
+  position: fixed;
+  background-color: white;
+  inset: 0;
+  z-index: 90;
+}
+
+.end .logo{
+  color: #FF7466;
+  text-align: center;
+  margin-top: 1em;
+}
+
+.end img{
+  height: 45vh;
+  object-fit: contain;
+  margin: 0 auto;
+  display: flex;
+}
+
+.end h3{
+  color: #050A21;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.end p{
+  color: #858383;
+  text-align: center;
+  margin-top: 1em;
+  line-height: 1.7em;
+}
+
+.end button{
+  background-color: #FF7466;
+  border: none;
+  color: white;
+  margin: 1.5em auto 0;
+  display: flex;
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  border-radius: 60px;
+}
+/* End of end section */
 
 @media(min-height: 570px){
   .welcome .logo{
