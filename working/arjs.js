@@ -19,16 +19,16 @@ function renderRamps(places) {
         let latitude = place.location.lat;
         let longitude = place.location.lng;
     
-        let model = document.createElement('a-text');
+        let model = document.createElement('a-image');
         model.setAttribute('look-at', '[gps-camera]');
-        model.setAttribute('scale', '50 50 50');
+        model.setAttribute('scale', '10 10 10');
         model.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-        model.setAttribute('value', 'Ramp Here')
+        model.setAttribute('src', './assets/nearest_ramp.png');
         
         model.addEventListener('loaded', () => {
             window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
         });
-        
+        console.log(model);
         
         scene.appendChild(model);
     });
@@ -37,6 +37,11 @@ function renderRamps(places) {
 
 
 function renderPlaces(places) {
+    if (places.length == 0) {
+        console.log("no places");
+        return
+    }
+
     let scene = document.querySelector('a-scene');
      
      let end = document.createElement('a-entity');
@@ -75,6 +80,7 @@ function renderPlaces(places) {
         pos = model.object3D.position;
  
         scene.appendChild(model);
+        console.log(model);
         
     });
 }
