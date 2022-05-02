@@ -24,6 +24,8 @@ function renderRamps(places) {
         model.setAttribute('scale', '50 50 50');
         model.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
         model.setAttribute('value', 'Ramp Here')
+        
+        scene.appendChild(model);
     });
 }
 
