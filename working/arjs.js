@@ -69,7 +69,7 @@ function renderPlaces(places) {
         model.setAttribute('look-at', pos);
         model.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
         model.setAttribute('gltf-model', './assets/red_arrow_chevrons_wayfinding/scene.gltf');
-        model.setAttribute('scale', '0.05 0.05 0.05');
+        model.setAttribute('scale', '0.01 0.01 0.01');
         model.setAttribute('position', '1 2 3');
         model.setAttribute('position', 'absolute');
  
