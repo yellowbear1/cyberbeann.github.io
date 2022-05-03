@@ -1,5 +1,6 @@
 let endPageContainer = document.querySelector("#end__container");
 let ARCameraPageContainer = document.querySelector("#AR__container");
+let welcomePageContainer = document.querySelector("#welcome__container");
 
 const ARCamToEndPage = (e) => {
     ARCameraPageContainer.style.transform = "translateX(-90%)";
