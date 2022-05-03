@@ -69,7 +69,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
 // Event Listeners
 welcomeButton.addEventListener('click', leaveWelcomePage);
 ARbutton.addEventListener('click', goARCamera);
-back.addEventListener('click', ARCamToEndPage);
+back.addEventListener('click', ARCamToSelectDest);
 bottomNavPlusButton.addEventListener('click', ()=> {addItemFormContainer.style.display = "block"});
 closeAddItemButton.addEventListener('click', hideAddItemForm);
 endHappyButton.addEventListener('click', goHome);
