@@ -19,43 +19,34 @@ const jlgRoute = {
     difficulty:
     "Easy",
     ramps:
-    [ 103.72318,1.34102,
-    103.72244,1.3414,
-    103.72245,1.34138,
-    103.72252,1.34133,
-    103.72267,1.34123,
-     103.72438,1.34015,
-    103.72438,1.34022,
-    103.72439,1.34028,
-    103.72439,1.34029
+    [ 103.722419, 1.341494,
+    103.722461, 1.341538,
+    103.722772,1.34138,
+    103.72252, 1.341208,
+    103.722802,1.341264,
+    103.723184,1.341054,
+    103.723635,1.340998,
     ],
     coords:
     [ 103.72244,1.3414,
-    103.72245,1.34138,
     103.72252,1.34133,
-    103.72267,1.34123,
     103.72275,1.34117,
-    103.72318,1.34102,
     103.72329,1.341,
     103.72342,1.34099,
     103.72364,1.34096,
     103.72364,1.34091,
-    103.72364,1.34089,
     103.72363,1.34086,
     103.72362,1.34083,
     103.72361,1.3408,
     103.72369,1.34077,
     103.72378,1.34072,
-    103.72388,1.34065,
     103.72396,1.34057,
     103.72405,1.34044,
     103.72412,1.3403,
     103.7242,1.34013,
     103.72427,1.34003,
-    103.72432,1.33999,
     103.72437,1.34003,
     103.72439,1.34005,
-    103.7244,1.34006,
     103.72439,1.34012,
     103.72438,1.34015,
     103.72438,1.34022,
@@ -81,6 +72,7 @@ var mapOptions = {
 
 var places = [];
 var ramps = [];
+var rampPoints = [];
 
 map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
@@ -164,7 +156,8 @@ function calcRoute() {
 function plotCommunityRoute(route) {
     directionDisplay.setDirections({routes: []});
         plotRoute(route.coords);
-        ramps = arrToPlaces(route.ramps);       
+        ramps = arrToPlaces(route.ramps);     
+        plotRamps(ramps);  
         document.getElementById("selectHead").innerHTML = "Distance: " + route.distance + "<br />Duration: " + route.duration 
         + "<br />Difficulty: ";
         
@@ -187,6 +180,43 @@ function zoomToObject(obj){
         bounds.extend(points[n]);
     }
     map.fitBounds(bounds);
+}
+
+function plotRamps(places) {
+
+    if (rampPoints.length == 0) {
+
+    } else {
+        rampPoints.forEach((point) => { 
+            point.setMap(null);
+        });
+        rampPoints = [];
+    }
+
+    if (places.length == 0) {
+        console.log("no ramps for plot");
+        return
+    }
+
+    places.forEach((place) => {
+        let latitude = place.location.lat;
+        let longitude = place.location.lng;
+
+        let pos = {
+            lat: latitude,
+            lng: longitude
+        };
+
+        let new_marker = new google.maps.Marker({
+            position: pos,
+            map: map,
+            title: 'Ramp',
+            label: 'Ramp'
+        });
+        
+        rampPoints.push(new_marker);
+        console.log("ramp plot is working");
+    });
 }
 
 function plotRoute(arr) {
