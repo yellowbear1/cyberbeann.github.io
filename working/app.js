@@ -2,7 +2,7 @@ let endPageContainer = document.querySelector("#end__container");
 let ARCameraPageContainer = document.querySelector("#AR__container");
 let welcomePageContainer = document.querySelector("#welcome__container");
 
-const ARCamToEndPage = (e) => {
+function ARCamToEndPage() {
     ARCameraPageContainer.style.transform = "translateX(-90%)";
     ARCameraPageContainer.addEventListener("transitionend", ()=>{welcomePageContainer.style.display="none"})
     ARCameraPageContainer.style.display = "none";
@@ -379,7 +379,7 @@ function calculateDist() {
                 const dist =  Math.round(google.maps.geometry.spherical.computeDistanceBetween(p1, p2));
                 if (dist <= 10) {
                     document.getElementById("distance").innerHTML = "You have arrived!"
-                    ARCamToEndPage;
+                    ARCamToEndPage();
                 } else {
                     document.getElementById("distance").innerHTML = dist + "m";
                 }
