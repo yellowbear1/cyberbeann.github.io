@@ -23,7 +23,7 @@ function renderRamps(places) {
         model.setAttribute('look-at', '[gps-camera]');
         model.setAttribute('scale', '10 10 10');
         model.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-        model.setAttribute('src', './assets/nearest_ramp.png');
+        model.setAttribute('src', './assets/nearest_ramp_g.png');
         
         model.addEventListener('loaded', () => {
             window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
@@ -69,9 +69,10 @@ function renderPlaces(places) {
         model.setAttribute('look-at', pos);
         model.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
         model.setAttribute('gltf-model', './assets/red_arrow_chevrons_wayfinding/scene.gltf');
-        model.setAttribute('scale', '0.01 0.01 0.01');
+        model.setAttribute('scale', '0.05 0.05 0.05');
         model.setAttribute('position', '1 2 3');
         model.setAttribute('position', 'absolute');
+        model.setAttribute('rotation', '90 0 0');
  
         model.addEventListener('loaded', () => {
             window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
