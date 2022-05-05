@@ -49,7 +49,7 @@ function renderPlaces(places) {
      end.setAttribute('id', '-1');
      end.setAttribute('gps-entity-place', `latitude: ${end_lat}; longitude: ${end_lng};`);
      end.setAttribute('gltf-model', './assets/map_pointer_3d_icon/scene.gltf');
-     end.setAttribute('scale', '1 1 1');
+     end.setAttribute('scale', '0.5 0.5 0.5');
      end.setAttribute('position', '1 2 3');
      end.setAttribute('position', 'absolute');
      
