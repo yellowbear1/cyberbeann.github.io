@@ -5,7 +5,6 @@ function loadRoute() {
     var ramps = window.parent.window.ramps;
     renderPlaces(arr);
     renderRamps(ramps);
-    console.log("working");
 }
 
 function renderRamps(places) {
@@ -28,8 +27,7 @@ function renderRamps(places) {
         model.addEventListener('loaded', () => {
             window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
         });
-        console.log(model);
-        
+
         scene.appendChild(model);
     });
 }
@@ -58,6 +56,15 @@ function renderPlaces(places) {
      var pos = end.object3D.position;
      scene.appendChild(end);
     
+
+    places.shift();
+
+
+     if (places.length == 0) {
+        console.log("no places");
+        return
+    }
+
     places.forEach((place) => {
         let latitude = place.location.lat;
         let longitude = place.location.lng;
@@ -81,7 +88,6 @@ function renderPlaces(places) {
         pos = model.object3D.position;
  
         scene.appendChild(model);
-        console.log(model);
         
     });
 }
