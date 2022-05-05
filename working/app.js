@@ -3,6 +3,7 @@ let ARCameraPageContainer = document.querySelector("#AR__container");
 let welcomePageContainer = document.querySelector("#welcome__container");
 
 function ARCamToEndPage() {
+    console.log("this is getting called");
     ARCameraPageContainer.style.transform = "translateX(-90%)";
     ARCameraPageContainer.addEventListener("transitionend", ()=>{welcomePageContainer.style.display="none"})
     ARCameraPageContainer.style.display = "none";
