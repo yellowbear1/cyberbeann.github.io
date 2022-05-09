@@ -20,7 +20,7 @@ function renderRamps(places) {
     
         let model = document.createElement('a-image');
         model.setAttribute('look-at', '[gps-camera]');
-        model.setAttribute('scale', '10 10 10');
+        model.setAttribute('scale', '1 1 1');
         model.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
         model.setAttribute('src', './assets/nearest_ramp_g.png');
         
