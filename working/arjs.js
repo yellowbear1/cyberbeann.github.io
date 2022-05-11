@@ -19,10 +19,9 @@ function renderRamps(places) {
         let longitude = place.location.lng;
     
         let model = document.createElement('a-image');
-        var camera = document.querySelector("[camera]");
-        var camposition = camera.object3D.position; 
+        
 
-        model.setAttribute('look-at', camposition);
+        model.setAttribute('look-at', "[gps-camera]");
         model.setAttribute('scale', '1 1 1');
         model.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
         model.setAttribute('src', './assets/nearest_ramp_g.png');
@@ -82,7 +81,7 @@ function renderPlaces(places) {
         model.setAttribute('scale', '0.02 0.02 0.02');
         model.setAttribute('position', '1 2 3');
         model.setAttribute('position', 'absolute');
-        model.setAttribute('rotation', '90 -90 0');
+        model.setAttribute('rotation', '90 90 0');
  
         model.addEventListener('loaded', () => {
             window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
