@@ -75,26 +75,27 @@ function renderPlaces(places) {
         let id = place.name;
         
  
+        let parent = document.createElement('a-entity');
         let model = document.createElement('a-entity');
-        
-        model.setAttribute('id', "node" + id.toString());
-        model.setAttribute('look-at', '#node' + (id+1).toString());
-        console.log("For " + id.toString());
-        console.log("node" + (id+1).toString());
-        model.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+        parent.setAttribute('id', "node" + id.toString());
+        parent.setAttribute('look-at', '[gps-camera]');
+        parent.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+
         model.setAttribute('gltf-model', './assets/red_arrow_chevrons_wayfinding/scene.gltf');
         model.setAttribute('scale', '0.02 0.02 0.02');
         model.setAttribute('position', '1 2 3');
         model.setAttribute('position', 'absolute');
         model.setAttribute('rotation', '90 -90 0');
- 
-        model.addEventListener('loaded', () => {
+
+
+        parent.appendChild(model)
+        parent.addEventListener('loaded', () => {
             window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
         });
         
         
- 
-        scene.appendChild(model);
+        console.log(parent)
+        scene.appendChild(parent);
         
     });
 }
