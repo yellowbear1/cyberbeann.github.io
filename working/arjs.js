@@ -78,7 +78,7 @@ function renderPlaces(places) {
         let parent = document.createElement('a-entity');
         let model = document.createElement('a-entity');
         parent.setAttribute('id', "node" + id.toString());
-        parent.setAttribute('look-at', '[gps-camera]');
+        parent.setAttribute('look-at', 'node' + (id+1).toString());
         parent.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
         parent.setAttribute('scale', '0.01 0.01 0.01');
         parent.setAttribute('position', 'absolute');
